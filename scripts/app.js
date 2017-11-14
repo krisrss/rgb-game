@@ -10,9 +10,18 @@ function createElement(elementName, attribute, attributeName){
     return newElement;
 };
 
+//Generate a random RGB color, with values between 1 - 255
+function randomColor(){
+    const randomNr = () => Math.floor(Math.random()*255) + 1;
+    return "rgb(" + randomNr() + ", " + randomNr() + ", " + randomNr() + ")";
+}
+
 //Create a color tile
 function createTile(){
-    return createElement("div","className","color-tile");
+    const colorTile = createElement("div","className","color-tile");
+    colorTile.style.backgroundColor = randomColor();
+    return colorTile;
+
 };
 
 //Add color tiles to the game board
