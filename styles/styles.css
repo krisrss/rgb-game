@@ -1,0 +1,17 @@
+#game-board{
+    width: 655px;
+    margin: 0 auto;
+    text-align: center;
+    border: 2px solid black;
+    
+}
+
+.color-tile{
+    border: 2px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    width: 30%;
+    height: 121px;
+    vertical-align: top;
+    margin: 1.3%;
+}
