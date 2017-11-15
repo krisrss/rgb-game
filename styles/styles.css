@@ -24,7 +24,7 @@
     font-size: 2em;
 }
 
-#tries-tab{
+.header-tabs{
     border: 3px solid black;
     background-color: white;
     font-size: 18px;
@@ -34,7 +34,14 @@
     position: relative;
     line-height: 30px;
     display: inline-block;
-    left: -200px;
-    top: -20px;
+}
 
+#tries-tab{
+    left: -130px;
+    top: -20px;
+}
+
+#countdown-tab{
+    left: 130px;
+    top: -20px;
 }

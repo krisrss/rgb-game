@@ -5,11 +5,14 @@ const colorToGuess = document.querySelector("#correct-color");
 const header = document.querySelector("#header");
 const triesCounter = document.querySelector("#tries");
 
+const timerCountdown = document.querySelector("#countdown");
+
 let GameBoard = {
     numberOfTiles : 9,
     correctColor : "",
     gameActive: false,
     triesLeft: 3,
+    countDownTime: 15,
     
     //Add color tiles to board
     addTiles : function(){
@@ -39,6 +42,35 @@ let ColorTile = {
         return "rgb(" + randomNr(255) +
                  ", " + randomNr(255) + 
                  ", " + randomNr(255) + ")";
+    }
+};
+
+
+let CountDownTimer = {
+    timerStore : null,
+
+    //Start the timer
+    start : function(time){
+        this.timerStore = setInterval(this.ticker, 1000);
+    },
+
+    //Reset timer to default values
+    reset : function(){
+        clearInterval(this.timerStore);
+        this.timerStore = null;
+        return this.start();
+    },
+
+    //Initialize the timer ticker
+    ticker : function(){
+        if(GameBoard.gameActive === true){
+            GameBoard.countDownTime--;
+            timerCountdown.textContent = GameBoard.countDownTime;
+        };
+        if(GameBoard.countDownTime === 0){
+            header.textContent = "TIME OVER";
+            GameBoard.gameActive = false;
+        };
     }
 };
 
@@ -88,9 +120,11 @@ function init(){
     GameBoard.gameActive = true;
     GameBoard.addTiles();
     GameBoard.setColorToGuess();
+    CountDownTimer.start();
 
     colorToGuess.textContent = GameBoard.correctColor; 
     triesCounter.textContent = GameBoard.triesLeft;
+    timerCountdown.textContent = GameBoard.countDownTime;
 
     winCondition(GameBoard.correctColor);
 };
