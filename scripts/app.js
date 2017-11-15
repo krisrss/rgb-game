@@ -4,6 +4,40 @@ const gameContent = document.querySelector("#color-tiles");
 const colorToGuess = document.querySelector("#correct-color");
 const header = document.querySelector("#header");
 
+let GameBoard = {
+    numberOfTiles : 9,
+    correctColor : "",
+    
+    //Add color tiles to board
+    addTiles : function(){
+        for(let i = 0; i < 9; i++){
+            gameContent.appendChild(ColorTile.createTile());
+        };
+    },
+    
+    //Set a color, that user has to guess
+    setColorToGuess: function(){
+        const selectTiles = 
+        document.querySelectorAll(".color-tile")[randomNr(9) - 1];
+        this.correctColor = selectTiles.style.backgroundColor;
+    }
+};
+
+//Create a color tile
+let ColorTile = {
+    createTile : function(){
+        const colorTile = createElement("div","className","color-tile");
+        colorTile.style.backgroundColor = this.randomColor();
+        return colorTile;
+    },
+
+    //Generate a random RGB color, with values between 1 - 255
+    randomColor : function(){
+        return "rgb(" + randomNr(255) +
+                 ", " + randomNr(255) + 
+                 ", " + randomNr(255) + ")";
+    }
+};
 
 
 //Create a custom HTML element
@@ -17,29 +51,7 @@ function createElement(elementName, attribute, attributeName){
 const randomNr = (maxNumber) => 
     Math.floor(Math.random()*maxNumber) + 1;
 
-
-//Generate a random RGB color, with values between 1 - 255
-function randomColor(){
-    return "rgb(" + randomNr(255) +
-             ", " + randomNr(255) + 
-             ", " + randomNr(255) + ")";
-};
-
-//Create a color tile
-function createTile(){
-    const colorTile = createElement("div","className","color-tile");
-    colorTile.style.backgroundColor = randomColor();
-    return colorTile;
-
-};
-
-//Select a color, that user has to guess
-function setColorToGuess(){
-    const selectTiles = document.querySelectorAll(".color-tile")[randomNr(9) - 1];
-    return selectTiles.style.backgroundColor;
-};
-
-//Validate the guess made by user, and hides wrong guesses
+//Validate the guess made by user, and hide wrong guesses
 function validateUserGuess(element, color){
     if(element.style.backgroundColor === color){
         header.textContent = "CORRECT";
@@ -63,12 +75,12 @@ function winCondition(guessColor){
 
 //Initialize the game board with game elements
 function init(){
-    for(let i = 0; i < 9; i++){
-        gameContent.appendChild(createTile());
-    };
-    const guessColor = setColorToGuess();
-    colorToGuess.textContent = guessColor;
-    winCondition(guessColor);
+    GameBoard.addTiles();
+    GameBoard.setColorToGuess();
+
+    colorToGuess.textContent = GameBoard.correctColor; 
+
+    winCondition(GameBoard.correctColor);
 };
 
 
