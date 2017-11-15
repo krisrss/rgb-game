@@ -2,6 +2,8 @@
 
 const gameContent = document.querySelector("#color-tiles");
 const colorToGuess = document.querySelector("#correct-color");
+const header = document.querySelector("#header");
+
 
 
 //Create a custom HTML element
@@ -37,12 +39,36 @@ function setColorToGuess(){
     return selectTiles.style.backgroundColor;
 };
 
+//Validate the guess made by user, and hides wrong guesses
+function validateUserGuess(element, color){
+    if(element.style.backgroundColor === color){
+        header.textContent = "CORRECT";
+    }
+    else{
+        element.style.visibility = "hidden";
+    }
+};
+
+//Set click event on each tile, that checks if game conditions are met
+function winCondition(guessColor){
+    gameContent.addEventListener("click", (el)=>{
+        const selectedEl = el.target;
+        if(selectedEl.className === "color-tile"){
+            validateUserGuess(selectedEl,guessColor)
+        }            
+    });            
+};
+
+
+
 //Initialize the game board with game elements
 function init(){
     for(let i = 0; i < 9; i++){
         gameContent.appendChild(createTile());
     };
-    colorToGuess.textContent = setColorToGuess();
+    const guessColor = setColorToGuess();
+    colorToGuess.textContent = guessColor;
+    winCondition(guessColor);
 };
 
 
