@@ -23,3 +23,18 @@
     line-height: 103px;
     font-size: 2em;
 }
+
+#tries-tab{
+    border: 3px solid black;
+    background-color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    height: 30px;
+    width: 130px;
+    position: relative;
+    line-height: 30px;
+    display: inline-block;
+    left: -200px;
+    top: -20px;
+
+}
