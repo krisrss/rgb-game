@@ -37,11 +37,25 @@
 }
 
 #tries-tab{
-    left: -130px;
+    left: -80px;
     top: -20px;
 }
 
+#replay-tab{
+    left: -140px;
+    top: -20px;
+}
+
+#replay-tab a {
+    text-decoration: none;
+    padding: 5px 31px; 
+}
+
+#replay-tab a:link, a:visited {
+    color: black;
+}   
+
 #countdown-tab{
-    left: 130px;
+    left: 220px;
     top: -20px;
 }
