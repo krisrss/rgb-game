@@ -16,14 +16,19 @@
     margin: 1.3%;  
 }
 
+#color-tiles{
+    margin-top: 25px;
+}
+
 
 #header{
     border: 3px solid black;
     border-radius: 10px;
     height: 100px;
-    line-height: 103px;
+    line-height: 90px;
     font-size: 2em;
     margin-bottom: 20px;
+
 }
 
 .header-tabs{

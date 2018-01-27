@@ -102,8 +102,9 @@ function createElement(elementName, attribute, attributeName){
 };
 
 //Generate a random number
-const randomNr = (maxNumber) => 
-    Math.floor(Math.random()*maxNumber) + 1;
+const randomNr = function(maxNumber){
+    return Math.floor(Math.random()*maxNumber) + 1;
+};
 
 //Validate the guess made by user, and hide wrong guesses
 function validateUserGuess(element){
@@ -125,7 +126,7 @@ function validateUserGuess(element){
 
 //Set click event on each tile, that checks if game conditions are met
 function winCondition(){
-    gameContent.addEventListener("click", (el)=>{
+    gameContent.addEventListener("click", function(el){
         el.stopImmediatePropagation();        
         const selectedEl = el.target;
         if(selectedEl.className === "color-tile" && GameBoard.gameActive === true){
@@ -155,9 +156,10 @@ function setUpGame(){
 //Reset hidden color tiles
 function resetColorTiles(){
     var selectTiles = document.querySelectorAll(".color-tile");
-    selectTiles.forEach(function(element) {
-        gameContent.removeChild(element)
-    }, this);
+
+    for(let i = 0; i < selectTiles.length; i++){
+        gameContent.removeChild(selectTiles[i]);
+    };
 };
 
 menuButton.addEventListener("click",function(){
