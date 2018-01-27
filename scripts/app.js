@@ -14,6 +14,9 @@ const easyButton = document.querySelector("#easy-button");
 const mediumButton = document.querySelector("#medium-button");
 const hardButton = document.querySelector("#hard-button");
 
+
+
+
 let GameBoard = {
     numberOfTiles : 0,
     correctColor : "",
@@ -87,8 +90,14 @@ let CountDownTimer = {
             timerCountdown.textContent = GameBoard.countDownTime; 
         }
         if(GameBoard.countDownTime === 0){
-            header.textContent = "TIME OVER";
-            GameBoard.gameActive = false;  
+            header.textContent = "Time's Up - " + GameBoard.correctColor.toUpperCase();
+            GameBoard.gameActive = false;
+            replayButton.style.visibility = "visible";
+            revealWinColors(GameBoard.numberOfTiles,GameBoard.correctColor);
+            header.style.color = "#ff3232";
+
+
+
         }
     }
 };
@@ -106,11 +115,28 @@ const randomNr = function(maxNumber){
     return Math.floor(Math.random()*maxNumber) + 1;
 };
 
+
+function revealWinColors(tileNr,color){
+    const selectTiles = document.querySelectorAll(".color-tile");        
+    for(let i = 0; i < tileNr; i++){
+        selectTiles[i].style.visibility = "visible";
+        selectTiles[i].style.backgroundColor = color;
+    };
+};
+
+
+
 //Validate the guess made by user, and hide wrong guesses
 function validateUserGuess(element){
     if(element.style.backgroundColor === GameBoard.correctColor){
-        header.textContent = "CORRECT";
+        header.textContent = "You Won! - " + GameBoard.correctColor.toUpperCase();
         GameBoard.gameActive = false;
+        replayButton.style.visibility = "visible";
+        revealWinColors(GameBoard.numberOfTiles,GameBoard.correctColor);
+        header.style.color = "#007f00";
+
+
+
     }
     else{
         element.style.visibility = "hidden";
@@ -119,8 +145,13 @@ function validateUserGuess(element){
     }
 
     if(GameBoard.triesLeft === 0){
-        header.textContent = "GAME OVER";
+        header.textContent = "You Lost - " + GameBoard.correctColor.toUpperCase();
         GameBoard.gameActive = false;
+        replayButton.style.visibility = "visible";
+        revealWinColors(GameBoard.numberOfTiles,GameBoard.correctColor);
+        header.style.color = "#ff3232";
+
+
     }
 };
 
@@ -147,7 +178,7 @@ function setGameState(tileNr,gameState,triesNr,timeNr){
 function setUpGame(){
     GameBoard.applyColors();
     GameBoard.setColorToGuess();
-    header.textContent = "Guess the color - " + GameBoard.correctColor;    
+    header.textContent = "Guess the color - " + GameBoard.correctColor.toUpperCase();    
     triesCounter.textContent = GameBoard.triesLeft;
     timerCountdown.textContent = GameBoard.countDownTime;
     winCondition();
@@ -181,14 +212,17 @@ replayButton.addEventListener("click",function(){
     else if(GameBoard.difficultyMode === "Hard"){
         setGameState(9,true,3,20);    
     }
+    replayButton.style.visibility = "hidden";
 
     init();
+
 });
 
 
 
 //Initialize the game board with game elements
 function init(){
+    header.style.color = "";
     resetColorTiles();
     GameBoard.addTiles();
     CountDownTimer.reset();   
@@ -216,3 +250,4 @@ hardButton.addEventListener("click", function(){
     setGameState(9,true,3,20);    
     init();
 });
+

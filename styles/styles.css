@@ -52,6 +52,7 @@
 #replay-tab{
     left: 257px;
     top: 85px;
+    visibility: hidden;
 }
 
 #replay-tab a {
@@ -64,7 +65,7 @@
 }   
 
 #countdown-tab{
-    left: 460px;
+    left: 458px;
     top: 85px;
 }
 
