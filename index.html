@@ -5,32 +5,37 @@
         <link rel="stylesheet" href="styles/styles.css">
 <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">    <body>
         <div id="game-board">
+            
             <div id="header">
-                <div>1</div>
-                <div>2</div>
+                Guess the color - <span id="correct-color">RGB(0, 0, 0)</span>
+            </div> 
 
-
-                Guess the color - <span id="correct-color">RGB(0, 0, 0)</span></div> 
             <div id="tries-tab" class="header-tabs">Lives : <span id="tries">0</span></div>
             <div id="countdown-tab" class="header-tabs">Time : <span id="countdown">00</span></div>
             <div id="replay-tab" class="header-tabs"><a href="#">Replay ?</a></div>            
             <div id="color-tiles"></div>
-            <div id="menu-tab"><a href="#">Change difficulty</a></div>            
+            <div id="menu-tab"><a href="#"> &larr; Back to menu</a></div>            
             
             <div id="difficulty-panel">
                 <h1>RGB Color Guessing Game</h1>
-                <p>Select difficulty:</p>
-                <button id="easy-button" class="menu-button">Easy</button>
-                <button id="medium-button" class="menu-button">Medium</button>
-                <button id="hard-button" class="menu-button">Hard</button>
+                <h2>Select difficulty:</h2>
+
+                <div id="easy-button" class="menu-btn">
+                    <a href="#">Easy</a>
+                </div>
+
+
+                <div id="medium-button" class="menu-btn">
+                    <a href="#">Medium</a>
+                </div>
+
+
+                <div id="hard-button" class="menu-btn">
+                    <a href="#">Hard</a>
+                </div>
             </div>
 
         </div>
-
-
-        
-
-
     </body>
     <script src="scripts/app.js"></script>
 </html>

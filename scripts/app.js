@@ -251,3 +251,6 @@ hardButton.addEventListener("click", function(){
     init();
 });
 
+
+
+

@@ -1,3 +1,20 @@
+*{
+    font-family: 'Acme', sans-serif;
+}
+
+
+body{
+    background-color: #f5f5dc;
+    margin-top:30px;
+}
+
+
+h1{
+    margin-top: 95px;
+    margin-bottom: 45px;
+    font-size: 40px;
+}
+
 #game-board{
     width: 655px;
     margin: 0 auto;
@@ -23,11 +40,15 @@
 
 #header{
     border: 3px solid black;
+    background-color: #fff;
     border-radius: 10px;
     height: 100px;
     line-height: 90px;
     font-size: 2em;
     margin-bottom: 20px;
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 5px 6px #ccc;
 
 }
 
@@ -41,6 +62,9 @@
     position: absolute;
     line-height: 30px;
     display: inline-block;
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    ]-webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 5px 6px #ccc;
 }
 
 #tries-tab{
@@ -62,7 +86,11 @@
 
 #replay-tab a:link, a:visited {
     color: black;
-}   
+}  
+
+#replay-tab :hover{
+    -webkit-text-stroke: 1px black; color: black;
+}
 
 #countdown-tab{
     left: 458px;
@@ -78,6 +106,10 @@
     position: absolute;
     left: 0px;
     top: 0px;
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 5px 6px #ccc;
+
 }
 
 .menu-button{
@@ -87,14 +119,56 @@
 
 #menu-tab{
     border: 3px solid black;
-    background-color: white;
+    background-color: #fff;
     font-size: 18px;
     border-radius: 10px;
     line-height: 33px;
-    
     margin-top: 20px;
     height: 30px;
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 5px 6px #ccc;
 }
 
+
+#menu-tab a {
+    text-decoration: none;
+    font-size: 25px;
+}
+
+#menu-tab a:link, a:visited {
+    color: black;
+}   
+
+
+#menu-tab a:hover{
+    -webkit-text-stroke: 1px black; color: black;
+}
+
+.menu-btn{
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 120px;
+    margin: 20px auto;
+    line-height: 30px;
+    padding: 10px;
+   -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+}
+
+
+.menu-btn a {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.menu-btn a:link, a:visited {
+    color: black;
+}   
+
+.menu-btn:hover{
+    -webkit-text-stroke: 1px black; color: black;
+}
 
 
